@@ -78,8 +78,9 @@
           </div>
           <div class="ratio">{{ lang.ratio }} {{ cropData.sourceImage.full.printRatio }}</div>
         </div>
+
         <button type="button" class="button cptGenerate" :class="{'button-primary':croppingApi}"
-                @click="cropThumbnails()" :disabled="!croppingApi">{{ lang.label_crop }}
+                @click="cropThumbnails()" :disabled="isCropButtonDisabled()">{{ lang.label_crop }}
         </button>
 
         <div class="cropContainer">
@@ -316,7 +317,7 @@ export default {
         }
         return false;
       }
-      if (this.currentCropSize.width < image.width || this.currentCropSize.height < image.height) {
+      if (this.currentCropSize.width <= image.width || this.currentCropSize.height <= image.height) {
         return true;
       }
       return false;
@@ -438,6 +439,17 @@ export default {
       } else {
         this.showDebugType = type;
       }
+    },
+    isCropButtonDisabled() {
+      let isLowRes = false;
+
+      this.selectedImageSizes.forEach(imageSize => {
+        if (this.isLowRes(imageSize)) {
+          isLowRes = true;
+        }
+      });
+
+      return this.croppingApi === null || isLowRes;
     },
     cropThumbnails() {
       let that = this;

@@ -24,7 +24,7 @@
  */
 
 
-define( 'CROP_THUMBNAILS_VERSION', '1.5.0' );
+define( 'CROP_THUMBNAILS_VERSION', '1.6.0' );
 
 include_once __DIR__ . '/functions/helper.php';
 include_once __DIR__ . '/functions/settingsscreen.php';

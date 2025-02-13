@@ -317,7 +317,7 @@ export default {
         }
         return false;
       }
-      if (this.currentCropSize.width < image.width || this.currentCropSize.height < image.height) {
+      if (this.currentCropSize.width + 1 < image.width || this.currentCropSize.height + 1 < image.height) {
         return true;
       }
       return false;
@@ -414,7 +414,7 @@ export default {
       });
 
       options.setSelect = this.getPreselect(that.cropData.sourceImage.full.width, that.cropData.sourceImage.full.height, options.aspectRatio);
-      options.minSize = [828,600];
+      options.minSize = [828, 600];
 
       //debug
       if (that.cropData.options.debug_js) {

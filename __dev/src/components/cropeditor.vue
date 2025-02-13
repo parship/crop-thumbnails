@@ -317,7 +317,7 @@ export default {
         }
         return false;
       }
-      if (this.currentCropSize.width < image.width && this.currentCropSize.height < image.height) {
+      if (this.currentCropSize.width < image.width || this.currentCropSize.height < image.height) {
         return true;
       }
       return false;
